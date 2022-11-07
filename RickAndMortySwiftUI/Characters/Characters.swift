@@ -17,7 +17,7 @@ struct Characters: View {
         ScrollView {
             LazyVGrid(columns: columns) {
                 CharacterCard()
-                    .frame(height: 250)
+                    .frame(height: 200)
                 Rectangle()
                     .frame(height: 250)
                 Rectangle()
