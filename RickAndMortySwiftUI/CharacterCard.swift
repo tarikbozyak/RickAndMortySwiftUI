@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct CharacterCard: View {
+    
+    var character: ResultModel
+    
+    init(character: ResultModel){
+        self.character = character
+    }
+    
     var body: some View {
         ZStack{
             CharacterImage
@@ -38,21 +45,21 @@ extension CharacterCard{
     private var CharacterDescription: some View {
         VStack(spacing: 0){
             HStack{
-                Text("Rick Morty")
+                Text(character.name ?? "")
                     .foregroundColor(.white)
                     .font(.headline)
                 
                 Spacer()
                 
                 HStack{
-                    Circle().frame(width: 10, height: 10)
-                        .foregroundColor(.green)
-                        .padding(.leading,7)
                     Text("Alive")
                         .foregroundColor(.white)
                         .font(.caption2)
-                        .padding(.trailing, 5)
+                    Circle().frame(width: 12, height: 12)
+                        .foregroundColor(.green)
+                    
                 }
+                .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
                 .background(.blue)
                 .cornerRadius(10)
             }
@@ -72,7 +79,7 @@ extension CharacterCard{
 
 struct CharacterCard_Previews: PreviewProvider {
     static var previews: some View {
-        CharacterCard()
+        CharacterCard(imageUrl: "", name: "String")
             .frame(width: 250, height: 250)
     }
 }
