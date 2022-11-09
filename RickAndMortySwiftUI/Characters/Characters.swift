@@ -10,23 +10,31 @@ import SwiftUI
 struct Characters: View {
     @StateObject var vm = CharactersViewModel()
     var columns: [GridItem] = [
-        GridItem(.adaptive(minimum: 150, maximum: 180), spacing: nil, alignment: nil),
-        GridItem(.adaptive(minimum: 150, maximum: 180), spacing: nil, alignment: nil)]
+        GridItem(.adaptive(minimum: 150, maximum: 180), spacing: 20, alignment: nil),
+        GridItem(.adaptive(minimum: 150, maximum: 180), spacing: 20, alignment: nil)]
     var body: some View {
-        
-        ScrollView {
-            LazyVGrid(columns: columns) {
-                CharacterCard(imageUrl: "", name: "Rick Morty")
-                    .clipped()
-                    .aspectRatio(1, contentMode: .fit)
-                CharacterCard(imageUrl: "", name: "Martin Luten")
-                    .clipped()
-                    .aspectRatio(1, contentMode: .fit)
+        NavigationView{
+            ScrollView {
+                VStack {
+                    Spacer(minLength: 10)
+                    LazyVGrid(columns: columns, spacing: 20) {
+                        ForEach(vm.resultList, id: \.self) { item in
+                            CharacterCard(character: item)
+                                .clipped()
+                                .aspectRatio(1, contentMode: .fit)
+                                .cornerRadius(20)
+                                .shadow(radius: 10)
+                        }
+                    }
+                    .task {
+                        try? await vm.getDatas()
+                    }
+                }
             }
-            .task {
-                try? await vm.getDatas()
-            }
+            .navigationTitle("Characters")
+            .navigationBarTitleDisplayMode(.large)
         }
+        
         
         
     }

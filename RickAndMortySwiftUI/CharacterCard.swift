@@ -6,13 +6,24 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct CharacterCard: View {
     
     var character: ResultModel
+    var imageUrl: URL?
+    var name: String
+    var species: String
+    var status: String
+    var statusColor: Color
     
     init(character: ResultModel){
+        imageUrl = URL(string: character.image ?? "")
         self.character = character
+        self.name = character.name ?? ""
+        self.species = character.species?.rawValue ?? ""
+        self.status = character.status?.rawValue ?? ""
+        self.statusColor = status == "Alive" ? .green : .red
     }
     
     var body: some View {
@@ -36,27 +47,34 @@ struct CharacterCard: View {
 
 extension CharacterCard{
     private var CharacterImage: some View {
-        Image("character5")
+        KFImage(imageUrl)
+            .placeholder {
+                Image(systemName: "arrow.2.circlepath.circle")
+                    .font(.largeTitle)
+                    .opacity(0.3)
+            }
             .resizable()
-            .cornerRadius(10)
         
     }
     
     private var CharacterDescription: some View {
         VStack(spacing: 0){
             HStack{
-                Text(character.name ?? "")
+                Text(name)
                     .foregroundColor(.white)
                     .font(.headline)
                 
                 Spacer()
                 
                 HStack{
-                    Text("Alive")
+                    Text(status)
                         .foregroundColor(.white)
                         .font(.caption2)
-                    Circle().frame(width: 12, height: 12)
-                        .foregroundColor(.green)
+                    if status.lowercased() != "unknown"{
+                        Circle().frame(width: 12, height: 12)
+                            .foregroundColor(statusColor)
+                    }
+                    
                     
                 }
                 .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
@@ -65,7 +83,7 @@ extension CharacterCard{
             }
             .padding(.top, 15)
             HStack{
-                Text("Human")
+                Text(species)
                     .foregroundColor(.white)
                     .font(.caption2)
                 Spacer()
@@ -79,7 +97,7 @@ extension CharacterCard{
 
 struct CharacterCard_Previews: PreviewProvider {
     static var previews: some View {
-        CharacterCard(imageUrl: "", name: "String")
+        CharacterCard(character: dev.result)
             .frame(width: 250, height: 250)
     }
 }
