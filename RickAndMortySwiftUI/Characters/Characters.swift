@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Characters: View {
+    @State private var searchText = ""
     @StateObject var vm = CharactersViewModel()
     var columns: [GridItem] = [
         GridItem(.adaptive(minimum: 150, maximum: 180), spacing: 20, alignment: nil),
@@ -31,9 +32,11 @@ struct Characters: View {
                     }
                 }
             }
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Look for something")
             .navigationTitle("Characters")
             .navigationBarTitleDisplayMode(.large)
         }
+        
         
         
         
