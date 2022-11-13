@@ -8,16 +8,65 @@
 import Foundation
 
 class CharactersViewModel: ObservableObject {
-    @Published var resultList: [ResultModel] = []
+    @Published private(set) var resultList: [ResultModel] = []
+    @Published private(set) var viewState: ViewState?
+    @Published var hasError = false
+    @Published private(set) var nextPage: String?
     
+//    private let pagingData = PagingData(itemsPerPage: 20, maxPageLimit: 5)
+    
+    var isLoading: Bool {
+        viewState == .loading
+    }
+    
+    var isFetching: Bool {
+        viewState == .fetching
+    }
+    
+    @MainActor
     func getDatas() async throws {
+        viewState = .loading
+        defer { viewState = .finished }
+        
         let request = CategoryHomeRequest.character
-        let data: Welcome = try await NetworkClient.shared.performRequest(request)
-        guard let resultData = data.results else {return}
-        await MainActor.run(body: {
-            for item in resultData {
-                resultList.append(item)
-            }
-        })
+        do {
+            let data : Welcome = try await NetworkClient.shared.performRequest(request)
+            nextPage = data.info?.next
+            guard let resultData = data.results else {return}
+            resultList += resultData
+        } catch {
+            throw NetworkError.handleError(error)
+        }
+    }
+    
+    @MainActor
+    func fetchNextSetOfUsers() async throws {
+        
+        guard nextPage != nil else { return }
+        
+        viewState = .fetching
+        defer { viewState = .finished }
+        
+        let request = PaginationRequest(url: nextPage!)
+        do {
+            let data : Welcome = try await NetworkClient.shared.performRequest(request)
+            nextPage = data.info?.next
+            guard let resultData = data.results else {return}
+            resultList += resultData
+        } catch {
+            throw NetworkError.handleError(error)
+        }
+    }
+    
+    func hasReachedEnd(of character: ResultModel) -> Bool{
+        resultList.last?.id == character.id
+    }
+}
+
+extension CharactersViewModel {
+    enum ViewState {
+        case fetching
+        case loading
+        case finished
     }
 }

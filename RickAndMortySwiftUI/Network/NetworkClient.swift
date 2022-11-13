@@ -82,10 +82,12 @@ extension NetworkClient: NetworkClientProvider {
         }
         
         guard let sessionResponse = try? await urlSession.data(for: request) else {
+            print("🔥 invalid request", request.url)
             throw NetworkError.invalidRequest
         }
         
         guard let response = sessionResponse.1 as? HTTPURLResponse else {
+            print("🔥 unknownError")
             throw NetworkError.unknownError
         }
         
@@ -94,9 +96,11 @@ extension NetworkClient: NetworkClientProvider {
         }
         
         guard let value = try? JSONDecoder().decode(Value.self, from: sessionResponse.0) else {
+            print("🔥 decoding error", request.url)
             throw NetworkError.decodingError
         }
         
+        print("<*> success")
         return value
     }
     

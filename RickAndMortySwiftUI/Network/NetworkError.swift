@@ -44,6 +44,7 @@ public extension NetworkError {
     /// - Parameter error: URLSession publisher error
     /// - Returns: Readable NetworkRequestError
     static func handleError(_ error: Error) -> NetworkError {
+        print("[🔥] handle error")
         switch error {
         case is Swift.DecodingError:
             let error = error as! DecodingError

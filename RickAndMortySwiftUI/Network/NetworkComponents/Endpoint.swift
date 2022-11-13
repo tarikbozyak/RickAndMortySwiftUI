@@ -8,7 +8,7 @@
 import Foundation
 
 public enum URLType {
-    case raw
+    case raw(url: String)
     case component
 }
 
@@ -29,11 +29,8 @@ extension Endpoint {
     func url(with scheme: URLScheme, host: URLHost) throws -> URL {
         switch type{
             
-        case .raw:
-            var scheme = scheme.rawValue
-            scheme.append(contentsOf: "://")
-            let host = host.rawValue
-            guard let url = URL(string: "\(scheme)\(host)\(path)") else {
+        case .raw(let url):
+            guard let url = URL(string: url) else {
                 throw NetworkError.invalidRequest
             }
             return url
@@ -70,19 +67,11 @@ extension Endpoint {
         return Endpoint(path: "/api/location")
     }
     
-    
-    
-    
-    
     static func detailEndpoint(path: String, id: String) -> Self {
         return Endpoint(path: path, queryParameters: [
             URLQueryItem(name: "id", value: id)
         ])
     }
-    
-
-    
-    
     
 }
 

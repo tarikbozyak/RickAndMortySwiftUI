@@ -18,7 +18,7 @@ extension PreviewProvider{
 class DeveloperPreview{
     static let instance = DeveloperPreview()
     
-    let result = ResultModel(id: 1, name: "Rick Sanchez", status: .alive, species: .human, type: nil, gender: .male, origin: nil, location: nil, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episode: nil, url: "https://rickandmortyapi.com/api/character/1", created: "2017-11-04T18:48:46.250Z")
+    let result = ResultModel(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: nil, gender: .male, origin: nil, location: nil, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episode: nil, url: "https://rickandmortyapi.com/api/character/1", created: "2017-11-04T18:48:46.250Z")
     
     
   }

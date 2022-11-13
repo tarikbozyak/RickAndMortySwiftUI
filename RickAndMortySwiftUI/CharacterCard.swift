@@ -21,7 +21,7 @@ struct CharacterCard: View {
         imageUrl = URL(string: character.image ?? "")
         self.character = character
         self.name = character.name ?? ""
-        self.species = character.species?.rawValue ?? ""
+        self.species = character.species ?? ""
         self.status = character.status?.rawValue ?? ""
         self.statusColor = status == "Alive" ? .green : .red
     }

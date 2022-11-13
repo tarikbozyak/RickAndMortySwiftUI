@@ -26,7 +26,7 @@ struct ResultModel: Codable, Hashable {
     let id: Int?
     let name: String?
     let status: Status?
-    let species: Species?
+    let species: String?
     let type: String?
     let gender: Gender?
     let origin, location: Location?
@@ -39,6 +39,7 @@ struct ResultModel: Codable, Hashable {
 enum Gender: String, Codable, Hashable {
     case female = "Female"
     case male = "Male"
+    case genderless = "Genderless"
     case unknown = "unknown"
 }
 
@@ -46,11 +47,6 @@ enum Gender: String, Codable, Hashable {
 struct Location: Codable, Hashable {
     let name: String?
     let url: String?
-}
-
-enum Species: String, Codable, Hashable {
-    case alien = "Alien"
-    case human = "Human"
 }
 
 enum Status: String, Codable, Hashable {

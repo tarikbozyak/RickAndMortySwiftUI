@@ -36,10 +36,15 @@ class Service {
         
     }
     
-    
-    
-    
-    
+    func paginationDataAsync(with url: String) async throws -> Welcome {
+        let request = PaginationRequest(url: url)
+        do {
+            let response : Welcome = try await NetworkClient.shared.performRequest(request)
+            return response
+        } catch {
+            throw NetworkError.handleError(error)
+        }
+    }
     
 }
 
