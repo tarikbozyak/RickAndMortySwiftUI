@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct Characters: View {
-    @State private var searchText = ""
     @State private var hasAppeared: Bool = false
+    @State var searchText = ""
     @StateObject private var vm = CharactersViewModel()
     
     var columns: [GridItem] = [
@@ -26,7 +26,7 @@ struct Characters: View {
                         VStack {
                             Spacer(minLength: 10)
                             LazyVGrid(columns: columns, spacing: 20) {
-                                ForEach(vm.resultList, id: \.self) { item in
+                                ForEach(vm.getData(with: searchText), id: \.self) { item in
                                     CharacterCard(character: item)
                                         .clipped()
                                         .aspectRatio(1, contentMode: .fit)

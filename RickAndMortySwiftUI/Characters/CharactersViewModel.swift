@@ -13,6 +13,7 @@ class CharactersViewModel: ObservableObject {
     @Published var hasError = false
     @Published private(set) var nextPage: String?
     
+    
 //    private let pagingData = PagingData(itemsPerPage: 20, maxPageLimit: 5)
     
     var isLoading: Bool {
@@ -60,6 +61,15 @@ class CharactersViewModel: ObservableObject {
     
     func hasReachedEnd(of character: ResultModel) -> Bool{
         resultList.last?.id == character.id
+    }
+    
+    func getData(with searchText: String) -> [ResultModel]{
+        if searchText.isEmpty {
+            return resultList
+        }
+        else {
+            return resultList.filter { ($0.name ?? "").lowercased().contains(searchText.lowercased())}
+        }
     }
 }
 
