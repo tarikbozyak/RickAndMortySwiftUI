@@ -20,5 +20,5 @@ class DeveloperPreview{
     
     let result = ResultModel(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", type: nil, gender: .male, origin: nil, location: nil, image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episode: nil, url: "https://rickandmortyapi.com/api/character/1", created: "2017-11-04T18:48:46.250Z")
     
-    
+    let episode = EpisodeModel(id: 1, name: "Pilot", airDate: "December 2, 2013", episode: "S01E01", url: "https://rickandmortyapi.com/api/episode/1", created: "2017-11-10T12:56:33.798Z", characters: ["https://rickandmortyapi.com/api/character/1", "https://rickandmortyapi.com/api/character/2"])
   }

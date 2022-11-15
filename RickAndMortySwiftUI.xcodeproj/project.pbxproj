@@ -34,6 +34,9 @@
 		8A643815290DB808004A0DBA /* CharactersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A643814290DB808004A0DBA /* CharactersViewModel.swift */; };
 		8A643819290DB8DA004A0DBA /* WelcomeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A643818290DB8DA004A0DBA /* WelcomeResponse.swift */; };
 		8A64381B290DB9E1004A0DBA /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A64381A290DB9E1004A0DBA /* Service.swift */; };
+		8A816DC7292427E0008EF62B /* EpisodesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A816DC6292427E0008EF62B /* EpisodesViewModel.swift */; };
+		8A816DCB292427FE008EF62B /* EpisodeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A816DCA292427FE008EF62B /* EpisodeCard.swift */; };
+		8A816DCD29242E75008EF62B /* EpisodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A816DCC29242E75008EF62B /* EpisodeResponse.swift */; };
 		8A8EAAE12920D0F400E614D7 /* PaginationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8EAAE02920D0F400E614D7 /* PaginationRequest.swift */; };
 		8AD3EBB82920272900A96B6C /* PagingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD3EBB72920272900A96B6C /* PagingData.swift */; };
 /* End PBXBuildFile section */
@@ -66,6 +69,9 @@
 		8A643814290DB808004A0DBA /* CharactersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewModel.swift; sourceTree = "<group>"; };
 		8A643818290DB8DA004A0DBA /* WelcomeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeResponse.swift; sourceTree = "<group>"; };
 		8A64381A290DB9E1004A0DBA /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		8A816DC6292427E0008EF62B /* EpisodesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewModel.swift; sourceTree = "<group>"; };
+		8A816DCA292427FE008EF62B /* EpisodeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCard.swift; sourceTree = "<group>"; };
+		8A816DCC29242E75008EF62B /* EpisodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeResponse.swift; sourceTree = "<group>"; };
 		8A8EAAE02920D0F400E614D7 /* PaginationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationRequest.swift; sourceTree = "<group>"; };
 		8AD3EBB72920272900A96B6C /* PagingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,9 +122,8 @@
 				8A6437E6290D558E004A0DBA /* Assets.xcassets */,
 				8A6437E8290D558E004A0DBA /* Preview Content */,
 				8A643816290DB816004A0DBA /* Characters */,
-				8A3B8662291795DC00F5B3A6 /* CharacterCard.swift */,
 				8A2B618E291C488D004C3440 /* MainTabView.swift */,
-				8A2B6190291C4947004C3440 /* Episodes.swift */,
+				8A816DC5292427C9008EF62B /* Episodes */,
 				8A2B6194291C4BE6004C3440 /* Locations.swift */,
 				8AD3EBB72920272900A96B6C /* PagingData.swift */,
 			);
@@ -185,6 +190,7 @@
 			children = (
 				8A643812290DB7ED004A0DBA /* Characters.swift */,
 				8A643814290DB808004A0DBA /* CharactersViewModel.swift */,
+				8A3B8662291795DC00F5B3A6 /* CharacterCard.swift */,
 			);
 			path = Characters;
 			sourceTree = "<group>";
@@ -193,8 +199,19 @@
 			isa = PBXGroup;
 			children = (
 				8A643818290DB8DA004A0DBA /* WelcomeResponse.swift */,
+				8A816DCC29242E75008EF62B /* EpisodeResponse.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		8A816DC5292427C9008EF62B /* Episodes */ = {
+			isa = PBXGroup;
+			children = (
+				8A2B6190291C4947004C3440 /* Episodes.swift */,
+				8A816DC6292427E0008EF62B /* EpisodesViewModel.swift */,
+				8A816DCA292427FE008EF62B /* EpisodeCard.swift */,
+			);
+			path = Episodes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,6 +301,7 @@
 				8A6437E3290D558D004A0DBA /* RickAndMortySwiftUIApp.swift in Sources */,
 				8A8EAAE12920D0F400E614D7 /* PaginationRequest.swift in Sources */,
 				8A6437FE290D5A6A004A0DBA /* HTTPMethod.swift in Sources */,
+				8A816DC7292427E0008EF62B /* EpisodesViewModel.swift in Sources */,
 				8A6437FC290D5A49004A0DBA /* URLScheme.swift in Sources */,
 				8A643813290DB7ED004A0DBA /* Characters.swift in Sources */,
 				8A64380F290DB68F004A0DBA /* Request.swift in Sources */,
@@ -291,6 +309,8 @@
 				8A6437F7290D59BB004A0DBA /* Scheduler.swift in Sources */,
 				8A6437F2290D593F004A0DBA /* NetworkClient.swift in Sources */,
 				8A64380C290D5BEF004A0DBA /* NetworkReachability.swift in Sources */,
+				8A816DCB292427FE008EF62B /* EpisodeCard.swift in Sources */,
+				8A816DCD29242E75008EF62B /* EpisodeResponse.swift in Sources */,
 				8A643808290D5B7B004A0DBA /* NetworkUtils.swift in Sources */,
 				8A643806290D5B08004A0DBA /* NetworkError.swift in Sources */,
 				8A643819290DB8DA004A0DBA /* WelcomeResponse.swift in Sources */,

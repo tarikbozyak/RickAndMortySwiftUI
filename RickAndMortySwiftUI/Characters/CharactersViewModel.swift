@@ -10,7 +10,6 @@ import Foundation
 class CharactersViewModel: ObservableObject {
     @Published private(set) var resultList: [ResultModel] = []
     @Published private(set) var viewState: ViewState?
-    @Published var hasError = false
     @Published private(set) var nextPage: String?
     
     
