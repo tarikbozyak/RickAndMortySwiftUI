@@ -22,7 +22,19 @@ struct EpisodeCard: View {
     }
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        GeometryReader { geo in
+            VStack (alignment: .leading) {
+                Rectangle()
+                    .foregroundColor(.gray)
+                    .overlay {
+                        Text("\(episode.id ?? 0)")
+                            .font(Font.custom("1", size: geo.size.height / 2))
+                            .foregroundColor(.white)
+                    }
+                Text("Pilot")
+                    .padding()
+            }
+        }
     }
 }
 
