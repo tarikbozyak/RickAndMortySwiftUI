@@ -7,6 +7,12 @@
 
 import Foundation
 
+public enum ViewState {
+    case fetching
+    case loading
+    case finished
+}
+
 class CharactersViewModel: ObservableObject {
     @Published private(set) var resultList: [ResultModel] = []
     @Published private(set) var viewState: ViewState?
@@ -72,10 +78,6 @@ class CharactersViewModel: ObservableObject {
     }
 }
 
-extension CharactersViewModel {
-    enum ViewState {
-        case fetching
-        case loading
-        case finished
-    }
-}
+
+
+
