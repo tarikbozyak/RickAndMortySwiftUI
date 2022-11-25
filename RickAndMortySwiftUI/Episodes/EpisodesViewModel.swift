@@ -8,7 +8,11 @@
 import Foundation
 
 class EpisodesViewModel : ObservableObject {
-    @Published var resultList: [EpisodeModel] = []
+    @Published var resultList: [EpisodeModel] = [] {
+        didSet {
+            print("count : ",resultList.count)
+        }
+    }
     @Published private(set) var viewState: ViewState?
     @Published private(set) var nextPage: String?
     
@@ -20,12 +24,15 @@ class EpisodesViewModel : ObservableObject {
         viewState == .fetching
     }
     
+    
+    
     @MainActor
     func getDatas() async throws {
+
         viewState = .loading
         defer { viewState = .finished }
         
-        let request = CategoryHomeRequest.episode
+        let request = CategoryHomeRequest.episode(path: nil)
         do {
             let data : EpisodeResponse = try await NetworkClient.shared.performRequest(request)
             nextPage = data.info?.next
@@ -34,25 +41,25 @@ class EpisodesViewModel : ObservableObject {
         } catch {
             throw NetworkError.handleError(error)
         }
+        
+        try await getPaginationData()
+
     }
     
     @MainActor
-    func fetchNextSetOfUsers() async throws {
+    func getPaginationData() async throws {
+        repeat{
+            let request = PaginationRequest(url: nextPage!)
+            do {
+                let data : EpisodeResponse = try await NetworkClient.shared.performRequest(request)
+                nextPage = data.info?.next
+                guard let resultData = data.results else {return}
+                resultList += resultData
+            } catch {
+                throw NetworkError.handleError(error)
+            }
+        } while nextPage != nil
         
-        guard nextPage != nil else { return }
-        
-        viewState = .fetching
-        defer { viewState = .finished }
-        
-        let request = PaginationRequest(url: nextPage!)
-        do {
-            let data : EpisodeResponse = try await NetworkClient.shared.performRequest(request)
-            nextPage = data.info?.next
-            guard let resultData = data.results else {return}
-            resultList += resultData
-        } catch {
-            throw NetworkError.handleError(error)
-        }
     }
     
     func hasReachedEnd(of character: EpisodeModel) -> Bool{

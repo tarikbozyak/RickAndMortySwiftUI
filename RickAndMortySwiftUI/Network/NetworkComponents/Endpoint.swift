@@ -59,8 +59,11 @@ extension Endpoint {
         return Endpoint(path: "/api/character")
     }
     
-    static func episodes() -> Self {
-        return Endpoint(path: "/api/episode")
+    static func episodes(path: String?) -> Self {
+        guard let path = path else {
+            return Endpoint(path: "/api/episode")
+        }
+        return Endpoint(path: path)
     }
     
     static func locations() -> Self {

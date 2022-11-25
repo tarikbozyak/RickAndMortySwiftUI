@@ -100,7 +100,7 @@ extension NetworkClient: NetworkClientProvider {
             throw NetworkError.decodingError
         }
         
-        print("<*> success")
+        print("<Network> request : ", response.url , "status code: ",response.statusCode)
         return value
     }
     

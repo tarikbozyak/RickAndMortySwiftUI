@@ -9,7 +9,7 @@ import Foundation
 
 enum CategoryHomeRequest: RequestTask {
     case character
-    case episode
+    case episode(path: String?)
     case location
     
     var scheme: URLScheme {
@@ -23,7 +23,8 @@ enum CategoryHomeRequest: RequestTask {
     var endpoint: Endpoint {
         switch self {
         case .character: return .characters()
-        case .episode: return .episodes()
+        case .episode(let path):
+            return .episodes(path: path)
         case .location: return .locations()
         }
     }
