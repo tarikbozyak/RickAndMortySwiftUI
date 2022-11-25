@@ -28,7 +28,7 @@ struct EpisodeCard: View {
             VStack (alignment: .leading) {
                 Rectangle()
                     .foregroundColor(.gray)
-                    .cornerRadius(20)
+                    .cornerRadius(geo.size.width/15)
                     .overlay {
                         Text("\(episodeNumber)")
                             .font(Font.custom("1", size: geo.size.height / 2.4))
