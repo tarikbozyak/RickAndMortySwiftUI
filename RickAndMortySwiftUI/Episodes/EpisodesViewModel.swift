@@ -8,11 +8,10 @@
 import Foundation
 
 class EpisodesViewModel : ObservableObject {
-    @Published var resultList: [EpisodeModel] = [] {
-        didSet {
-            print("count : ",resultList.count)
-        }
-    }
+    
+    var resultList: [EpisodeModel] = []
+    @Published var result: [[EpisodeModel]] = []
+    
     @Published private(set) var viewState: ViewState?
     @Published private(set) var nextPage: String?
     
@@ -43,7 +42,14 @@ class EpisodesViewModel : ObservableObject {
         }
         
         try await getPaginationData()
-
+        await categoriseData()
+    }
+    
+    @MainActor
+    func categoriseData() async {
+        result += Dictionary(grouping: resultList) { $0.episode?.getEpisodeInfo().0 }.values.map({$0}).sorted {
+            ($0.first?.episode?.getEpisodeInfo().0) ?? 0 < ($1.first?.episode?.getEpisodeInfo().0) ?? 0
+        }
     }
     
     @MainActor

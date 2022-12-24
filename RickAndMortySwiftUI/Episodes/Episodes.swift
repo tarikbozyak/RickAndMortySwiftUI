@@ -14,14 +14,9 @@ struct Episodes: View {
     var body: some View {
         NavigationView{
             VStack{
-                ScrollView(.horizontal ,showsIndicators: false) {
-                    HStack(alignment: .top, spacing: 20) {
-                        Spacer(minLength: 0)
-                            ForEach(vm.resultList, id: \.self) { item in
-                                EpisodeCard(with: item)
-                                    .shadow(radius: 5)
-                                    .frame(width:150, height: 250)
-                            }
+                ScrollView(.vertical ,showsIndicators: false) {
+                    ForEach(Array(vm.result.enumerated()), id: \.offset) { index, item in
+                        EpisodeWidget(episodeList: item, seasonNumber: index + 1)
                     }
                     .padding(.top,10)
                 }

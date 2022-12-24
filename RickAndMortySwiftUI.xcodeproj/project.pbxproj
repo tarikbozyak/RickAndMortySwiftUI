@@ -40,6 +40,7 @@
 		8A816DCD29242E75008EF62B /* EpisodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A816DCC29242E75008EF62B /* EpisodeResponse.swift */; };
 		8A8EAAE12920D0F400E614D7 /* PaginationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8EAAE02920D0F400E614D7 /* PaginationRequest.swift */; };
 		8AD3EBB82920272900A96B6C /* PagingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD3EBB72920272900A96B6C /* PagingData.swift */; };
+		8AF563DA293E3E6C00EE97E7 /* EpisodeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF563D9293E3E6C00EE97E7 /* EpisodeWidget.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		8A816DCC29242E75008EF62B /* EpisodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeResponse.swift; sourceTree = "<group>"; };
 		8A8EAAE02920D0F400E614D7 /* PaginationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationRequest.swift; sourceTree = "<group>"; };
 		8AD3EBB72920272900A96B6C /* PagingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingData.swift; sourceTree = "<group>"; };
+		8AF563D9293E3E6C00EE97E7 /* EpisodeWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeWidget.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +215,7 @@
 				8A2B6190291C4947004C3440 /* Episodes.swift */,
 				8A816DC6292427E0008EF62B /* EpisodesViewModel.swift */,
 				8A816DCA292427FE008EF62B /* EpisodeCard.swift */,
+				8AF563D9293E3E6C00EE97E7 /* EpisodeWidget.swift */,
 			);
 			path = Episodes;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				8A6437FC290D5A49004A0DBA /* URLScheme.swift in Sources */,
 				8A643813290DB7ED004A0DBA /* Characters.swift in Sources */,
 				8A64380F290DB68F004A0DBA /* Request.swift in Sources */,
+				8AF563DA293E3E6C00EE97E7 /* EpisodeWidget.swift in Sources */,
 				8A2B6191291C4947004C3440 /* Episodes.swift in Sources */,
 				8A6437F7290D59BB004A0DBA /* Scheduler.swift in Sources */,
 				8A6437F2290D593F004A0DBA /* NetworkClient.swift in Sources */,

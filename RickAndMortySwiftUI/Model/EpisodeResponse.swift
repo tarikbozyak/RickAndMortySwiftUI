@@ -15,7 +15,7 @@ struct EpisodeResponse: Codable {
 }
 
 // MARK: - EpisodeModel
-struct EpisodeModel: Codable, Hashable {
+struct EpisodeModel: Codable, Hashable, Identifiable {
     let id: Int?
     let name: String?
     let airDate: String?
