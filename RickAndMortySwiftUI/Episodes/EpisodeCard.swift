@@ -26,7 +26,9 @@ struct EpisodeCard: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                Color("season\(seasonNumber)")
+                LinearGradient(colors: [Color("season\(seasonNumber)"),Color(.systemGray5), Color("season\(seasonNumber)")],
+                               startPoint: .topLeading,
+                               endPoint: .center)
                 VStack{
                     Text("\(episodeNumber)")
                         .font(Font.custom("Avenir Next Condensed Bold", size: geo.size.height / 3.5))
