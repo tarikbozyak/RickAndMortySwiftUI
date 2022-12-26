@@ -10,21 +10,59 @@ import SwiftUI
 struct EpisodeWidget: View {
     
     @State var episodeList: [EpisodeModel]
+    @State var isCollapsed: Bool = false
+    
+    
     var seasonNumber: Int
     var body: some View {
         VStack(alignment: .leading) {
-            Text("\(seasonNumber). Season")
-                .padding()
+            HStack{
+                Text("\(seasonNumber). Season")
+                    .fontWeight(.heavy)
+                    .padding(.horizontal)
+                
+                Spacer()
+                
+                Button(action: {
+                    withAnimation(.spring()){
+                        isCollapsed.toggle()
+                    }
+                }) {
+                    if isCollapsed{
+                        Text("Hide")
+                    } else {
+                        Text("Show All")
+                    }
+                }
+                .padding(.horizontal)
+            }
+            
+            Rectangle()
+                .fill(Color.black)
+                .frame(height: 2)
+            
             Spacer(minLength: 20)
-            ScrollView(.horizontal ,showsIndicators: false) {
-                LazyHStack(alignment: .top, spacing:20) {
-                    ForEach(episodeList, id: \.self){ item in
+            
+            
+            if isCollapsed {
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 15), count: 2), spacing: 15) {
+                    ForEach(episodeList) { item in
                         EpisodeCard(with: item)
-                            .shadow(radius: 5)
+                            .shadow(radius: 3)
                             .frame(width:150, height: 250)
                     }
                 }
-                .padding()
+            } else {
+                ScrollView(.horizontal ,showsIndicators: false) {
+                    LazyHStack(alignment: .top, spacing:20) {
+                        ForEach(episodeList, id: \.self){ item in
+                            EpisodeCard(with: item)
+                                .shadow(radius: 3)
+                                .frame(width:150, height: 250)
+                        }
+                    }
+                    .padding()
+                }
             }
             
         }

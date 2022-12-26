@@ -35,8 +35,9 @@ struct EpisodeCard: View {
                             .foregroundColor(.white)
                     }
                 Text(episodeName)
-                    .lineLimit(1)
-                    .padding()
+                    .lineLimit(2)
+                    .frame(height: 50)
+                    
             }
 
         }
