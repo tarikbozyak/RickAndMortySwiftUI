@@ -25,21 +25,27 @@ struct EpisodeCard: View {
     
     var body: some View {
         GeometryReader { geo in
-            VStack (alignment: .leading) {
-                Rectangle()
-                    .foregroundColor(.gray)
-                    .cornerRadius(geo.size.width/15)
-                    .overlay {
-                        Text("\(episodeNumber)")
-                            .font(Font.custom("1", size: geo.size.height / 2.4))
-                            .foregroundColor(.white)
-                    }
-                Text(episodeName)
-                    .lineLimit(2)
-                    .frame(height: 50)
+            ZStack {
+                Color("season\(seasonNumber)")
+                VStack{
+                    Text("\(episodeNumber)")
+                        .font(Font.custom("Avenir Next Condensed Bold", size: geo.size.height / 3.5))
+                        .foregroundColor(.white)
+                        .padding(.vertical, 10)
                     
+                    Text(episodeName)
+                        .font(Font.custom("Avenir Next Condensed Bold", size: geo.size.height / 10))
+                        .foregroundColor(.white)
+                        .lineLimit(3)
+                        .padding(.horizontal)
+                    
+                    
+                    Spacer()
+                }
             }
-
+            
+            
+            
         }
     }
 }

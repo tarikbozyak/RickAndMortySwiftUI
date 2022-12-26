@@ -45,25 +45,31 @@ struct EpisodeWidget: View {
             
             
             if isCollapsed {
-                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 15), count: 2), spacing: 15) {
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 15), count: 3), spacing: 15) {
                     ForEach(episodeList) { item in
                         EpisodeCard(with: item)
                             .shadow(radius: 3)
-                            .frame(width:150, height: 250)
+                            .cornerRadius(15)
+                            .frame(width:120, height: 200)
                     }
                 }
+                .padding(.horizontal)
             } else {
                 ScrollView(.horizontal ,showsIndicators: false) {
-                    LazyHStack(alignment: .top, spacing:20) {
+                    LazyHStack(alignment: .top, spacing:15) {
                         ForEach(episodeList, id: \.self){ item in
                             EpisodeCard(with: item)
                                 .shadow(radius: 3)
-                                .frame(width:150, height: 250)
+                                .cornerRadius(15)
+                                .frame(width:120, height: 200)
+                            
                         }
                     }
-                    .padding()
+                    .padding(.horizontal)
                 }
             }
+            
+            Spacer(minLength: 20)
             
         }
     }
