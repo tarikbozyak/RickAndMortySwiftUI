@@ -38,7 +38,7 @@ struct EpisodeWidget: View {
             }
             
             Rectangle()
-                .fill(Color.black)
+                .fill(Color("season\(seasonNumber)"))
                 .frame(height: 2)
             
             Spacer(minLength: 20)
