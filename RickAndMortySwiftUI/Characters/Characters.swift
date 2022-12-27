@@ -10,11 +10,14 @@ import SwiftUI
 struct Characters: View {
     @State private var hasAppeared: Bool = false
     @State var searchText = ""
+    @State private var showingCredits = false
+    @State var selectedButton: LivingStatus = .All
     @StateObject private var vm = CharactersViewModel()
     
     var columns: [GridItem] = [
         GridItem(.adaptive(minimum: 150, maximum: 180), spacing: 20, alignment: nil),
         GridItem(.adaptive(minimum: 150, maximum: 180), spacing: 20, alignment: nil)]
+    
     var body: some View {
         NavigationView{
             ZStack{
@@ -53,6 +56,20 @@ struct Characters: View {
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Look for something")
             .navigationTitle("Characters")
             .navigationBarTitleDisplayMode(.large)
+            .toolbar{
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        showingCredits.toggle()
+                    }) {
+                        Image(systemName: "line.3.horizontal.decrease.circle")
+                    }
+                    .sheet(isPresented: $showingCredits) {
+                        BottomSheet(selectedButton: $selectedButton)
+                            .presentationDetents([.medium, .fraction(0.25)])
+                    }
+                    
+                }
+            }
         }
         .task {
             if !hasAppeared {
