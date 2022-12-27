@@ -22,7 +22,7 @@ struct FilterButton: View {
                 if buttonTitle == LivingStatus.Live.rawValue || buttonTitle == LivingStatus.Dead.rawValue{
                     Circle()
                         .frame(width: 12, height: 12)
-                        .foregroundColor(buttonTitle == "Live" ? .green : .red)
+                        .foregroundColor(buttonTitle == LivingStatus.Live.rawValue ? .green : .red)
                 }
                 
                 Text(buttonTitle)
