@@ -8,30 +8,30 @@
 import SwiftUI
 
 struct FilterButton: View {
-    var buttonTitle: String
+    var button: LivingStatus
     @Binding var livingStatus: LivingStatus
     var animation: Namespace.ID
     
     var body: some View {
         Button(action: {
             withAnimation(.spring()){
-                livingStatus = LivingStatus(rawValue: buttonTitle)!
+                livingStatus = button
             }
         }) {
             HStack{
-                if buttonTitle == LivingStatus.Live.rawValue || buttonTitle == LivingStatus.Dead.rawValue{
+                if button == .Live || button == .Dead {
                     Circle()
                         .frame(width: 12, height: 12)
-                        .foregroundColor(buttonTitle == LivingStatus.Live.rawValue ? .green : .red)
+                        .foregroundColor(button == .Live ? .green : .red)
                 }
                 
-                Text(buttonTitle)
+                Text(button.rawValue)
                     .font(.system(size: 20))
                     .fontWeight(.medium)
             }
             .padding()
             .overlay {
-                if livingStatus == LivingStatus(rawValue: buttonTitle){
+                if livingStatus == button {
                     RoundedRectangle(cornerRadius: 16)
                         .stroke(.blue, lineWidth: 4)
                 }

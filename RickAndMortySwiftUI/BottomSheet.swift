@@ -21,9 +21,9 @@ struct BottomSheet: View {
         VStack {
             HStack(spacing: 24) {
                 
-                FilterButton(buttonTitle: LivingStatus.All.rawValue, livingStatus: $selectedButton, animation: animation)
-                FilterButton(buttonTitle: LivingStatus.Live.rawValue, livingStatus: $selectedButton, animation: animation)
-                FilterButton(buttonTitle: LivingStatus.Dead.rawValue, livingStatus: $selectedButton, animation: animation)
+                FilterButton(button: .All, livingStatus: $selectedButton, animation: animation)
+                FilterButton(button: .Live, livingStatus: $selectedButton, animation: animation)
+                FilterButton(button: .Dead, livingStatus: $selectedButton, animation: animation)
                 
             }
         }
