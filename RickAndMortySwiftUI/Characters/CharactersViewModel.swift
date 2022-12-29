@@ -68,13 +68,30 @@ class CharactersViewModel: ObservableObject {
         resultList.last?.id == character.id
     }
     
-    func getData(with searchText: String) -> [ResultModel]{
+    func getData(with searchText: String, livingStatus: LivingStatus) -> [ResultModel] {
+        
+        var filteredData: [ResultModel] = []
+        
         if searchText.isEmpty {
-            return resultList
+            filteredData = resultList
+        } else {
+            filteredData = resultList.filter { ($0.name ?? "").lowercased().contains(searchText.lowercased())}
         }
-        else {
-            return resultList.filter { ($0.name ?? "").lowercased().contains(searchText.lowercased())}
+        
+        switch livingStatus {
+        case .All:
+            break
+        case .Alive:
+            filteredData = filteredData.filter{$0.status?.rawValue.lowercased() == "Alive".lowercased()}
+        case .Dead:
+            filteredData = filteredData.filter{$0.status?.rawValue.lowercased() == "Dead".lowercased()}
+        case .Unknown:
+            filteredData = filteredData.filter{$0.status?.rawValue.lowercased() == "Unknown".lowercased()}
+        default:
+            break
         }
+        
+        return filteredData
     }
 }
 

@@ -18,22 +18,22 @@ struct FilterButton: View {
                 livingStatus = button
             }
         }) {
-            HStack{
-                if button == .Live || button == .Dead {
+            HStack(spacing: 4){
+                if button == .Alive || button == .Dead {
                     Circle()
-                        .frame(width: 12, height: 12)
-                        .foregroundColor(button == .Live ? .green : .red)
+                        .frame(width: 10, height: 10)
+                        .foregroundColor(button == .Alive ? .green : .red)
                 }
                 
                 Text(button.rawValue)
-                    .font(.system(size: 20))
+                    .font(.system(size: 16))
                     .fontWeight(.medium)
             }
             .padding()
             .overlay {
                 if livingStatus == button {
                     RoundedRectangle(cornerRadius: 16)
-                        .stroke(.blue, lineWidth: 4)
+                        .stroke(.blue, lineWidth: 3)
                 }
             }
             

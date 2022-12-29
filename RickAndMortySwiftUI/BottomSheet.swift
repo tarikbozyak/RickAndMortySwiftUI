@@ -9,23 +9,50 @@ import SwiftUI
 
 enum LivingStatus: String{
     case All
-    case Live
+    case Alive
     case Dead
+    case Unknown
 }
 
 struct BottomSheet: View {
-    @Binding var selectedButton: LivingStatus
+    @Binding var selectedStatus: LivingStatus
     @Namespace var animation
     var body: some View {
+
         
-        VStack {
-            HStack(spacing: 24) {
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack(alignment: .leading) {
                 
-                FilterButton(button: .All, livingStatus: $selectedButton, animation: animation)
-                FilterButton(button: .Live, livingStatus: $selectedButton, animation: animation)
-                FilterButton(button: .Dead, livingStatus: $selectedButton, animation: animation)
+                Spacer()
+                    .frame(height: 24)
                 
+                Text("Status")
+                    .font(.title)
+                    .fontWeight(.bold)
+                
+                HStack(spacing: 16) {
+                    FilterButton(button: .All, livingStatus: $selectedStatus, animation: animation)
+                    FilterButton(button: .Alive, livingStatus: $selectedStatus, animation: animation)
+                    FilterButton(button: .Dead, livingStatus: $selectedStatus, animation: animation)
+                    FilterButton(button: .Unknown, livingStatus: $selectedStatus, animation: animation)
+                }
+                
+                Text("Gender")
+                    .font(.title)
+                    .fontWeight(.bold)
+                
+                HStack(spacing: 16) {
+                    FilterButton(button: .All, livingStatus: $selectedStatus, animation: animation)
+                    FilterButton(button: .Alive, livingStatus: $selectedStatus, animation: animation)
+                    FilterButton(button: .Dead, livingStatus: $selectedStatus, animation: animation)
+                    FilterButton(button: .Unknown, livingStatus: $selectedStatus, animation: animation)
+                }
+                
+                
+                
+                Spacer()
             }
+            .padding(8)
         }
         
         
