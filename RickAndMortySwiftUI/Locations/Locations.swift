@@ -19,14 +19,19 @@ struct Locations: View {
                     ProgressView()
                 }
                 else {
-                    ScrollView {
-                        LazyVStack(spacing: 10) {
-                            
-                            ForEach(vm.resultList, id: \.self){item in
-                                Text(item.name ?? "NO-NAME")
-                            }
+                    List {
+                        ForEach(vm.resultList) { item in
+                            Text(item.name ?? "")
+                                .onAppear(perform: {
+                                    if vm.hasReachedEnd(of: item) && !vm.isFetching {
+                                        Task {
+                                            try? await vm.fetchNextSetOfLocations()
+                                        }
+                                    }
+                                })
                         }
                     }
+                    .listStyle(.insetGrouped)
                     .overlay(alignment: .bottom) {
                         if vm.isFetching {
                             ProgressView()

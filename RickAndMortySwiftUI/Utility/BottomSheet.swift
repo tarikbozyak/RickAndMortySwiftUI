@@ -10,13 +10,12 @@ import SwiftUI
 
 struct BottomSheet: View {
     @Binding var selectedStatus: Status
-    @Binding var selectedGender: Gender
     @Namespace var animation
     @State var gridLayout: [GridItem] = [ GridItem() ]
     
     private var columns: [GridItem] {
             return [
-                .init(.adaptive(minimum: 80, maximum: 120))
+                .init(.adaptive(minimum: 100, maximum: 150))
             ]
         }
     
@@ -40,32 +39,9 @@ struct BottomSheet: View {
                     FilterStatusButton(button: .Unknown, livingStatus: $selectedStatus, animation: animation)
                 }
                 
-                Text("Gender")
-                    .font(.title)
-                    .fontWeight(.bold)
-                
-                LazyVGrid(columns: columns, alignment: .leading) {
-                    FilterGenderButton(button: .All, genderStatus: $selectedGender, animation: animation)
-                    FilterGenderButton(button: .Male, genderStatus: $selectedGender, animation: animation)
-                    FilterGenderButton(button: .Female, genderStatus: $selectedGender, animation: animation)
-                    FilterGenderButton(button: .Genderless, genderStatus: $selectedGender, animation: animation)
-                    FilterGenderButton(button: .Unknown, genderStatus: $selectedGender, animation: animation)
-                }
-                
-                /*
-                HStack(spacing: 16) {
-                    FilterGenderButton(button: .All, genderStatus: $selectedGender, animation: animation)
-                    FilterGenderButton(button: .Male, genderStatus: $selectedGender, animation: animation)
-                    FilterGenderButton(button: .Female, genderStatus: $selectedGender, animation: animation)
-                    FilterGenderButton(button: .Genderless, genderStatus: $selectedGender, animation: animation)
-                    FilterGenderButton(button: .Unknown, genderStatus: $selectedGender, animation: animation)
-                }
-                */
-                
-                
                 Spacer()
             }
-            .padding(8)
+            .padding(16)
         }
         
         

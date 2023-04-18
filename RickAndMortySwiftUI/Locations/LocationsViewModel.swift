@@ -57,8 +57,8 @@ class LocationsViewModel : ObservableObject {
         }
     }
     
-    func hasReachedEnd(of character: ResultModel) -> Bool{
-        resultList.last?.id == character.id
+    func hasReachedEnd(of location: LocationModel) -> Bool{
+        resultList.last?.id == location.id
     }
     
 }

@@ -12,7 +12,6 @@ struct Characters: View {
     @State var searchText = ""
     @State private var isShowingFilterMenu = false
     @State var selectedStatus: Status = .All
-    @State var selectedGender: Gender = .All
     @StateObject private var vm = CharactersViewModel()
     
     var columns: [GridItem] = [
@@ -65,7 +64,7 @@ struct Characters: View {
                         Image(systemName: "line.3.horizontal.decrease.circle")
                     }
                     .sheet(isPresented: $isShowingFilterMenu) {
-                        BottomSheet(selectedStatus: $selectedStatus, selectedGender: $selectedGender)
+                        BottomSheet(selectedStatus: $selectedStatus)
                             .presentationDetents([.medium, .fraction(0.25)])
                     }
                     
