@@ -37,10 +37,11 @@ struct ResultModel: Codable, Hashable {
 }
 
 enum Gender: String, Codable, Hashable {
-    case female = "Female"
-    case male = "Male"
-    case genderless = "Genderless"
-    case unknown = "unknown"
+    case All
+    case Female = "Female"
+    case Male = "Male"
+    case Genderless = "Genderless"
+    case Unknown = "unknown"
 }
 
 // MARK: - Location
@@ -50,9 +51,10 @@ struct Location: Codable, Hashable {
 }
 
 enum Status: String, Codable, Hashable {
-    case alive = "Alive"
-    case dead = "Dead"
-    case unknown = "unknown"
+    case All
+    case Alive = "Alive"
+    case Dead = "Dead"
+    case Unknown = "unknown"
 }
 
 

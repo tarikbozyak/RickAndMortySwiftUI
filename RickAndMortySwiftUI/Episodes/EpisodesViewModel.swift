@@ -24,7 +24,6 @@ class EpisodesViewModel : ObservableObject {
     }
     
     
-    
     @MainActor
     func getDatas() async throws {
 

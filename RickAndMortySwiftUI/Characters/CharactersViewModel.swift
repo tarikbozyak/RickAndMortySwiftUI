@@ -7,19 +7,10 @@
 
 import Foundation
 
-public enum ViewState {
-    case fetching
-    case loading
-    case finished
-}
-
 class CharactersViewModel: ObservableObject {
     @Published private(set) var resultList: [ResultModel] = []
     @Published private(set) var viewState: ViewState?
     @Published private(set) var nextPage: String?
-    
-    
-//    private let pagingData = PagingData(itemsPerPage: 20, maxPageLimit: 5)
     
     var isLoading: Bool {
         viewState == .loading
@@ -68,7 +59,7 @@ class CharactersViewModel: ObservableObject {
         resultList.last?.id == character.id
     }
     
-    func getData(with searchText: String, livingStatus: LivingStatus) -> [ResultModel] {
+    func getData(with searchText: String, status: Status) -> [ResultModel] {
         
         var filteredData: [ResultModel] = []
         
@@ -78,7 +69,7 @@ class CharactersViewModel: ObservableObject {
             filteredData = resultList.filter { ($0.name ?? "").lowercased().contains(searchText.lowercased())}
         }
         
-        switch livingStatus {
+        switch status {
         case .All:
             break
         case .Alive:
