@@ -49,20 +49,34 @@ extension CharacterCard{
     private var CharacterImage: some View {
         KFImage(imageUrl)
             .placeholder {
-                Image(systemName: "arrow.2.circlepath.circle")
-                    .font(.largeTitle)
-                    .opacity(0.3)
+                ProgressView()
             }
             .resizable()
         
     }
     
     private var CharacterDescription: some View {
-        VStack(spacing: 0){
+        VStack(spacing: 5){
             HStack{
                 Text(name)
                     .foregroundColor(.white)
                     .font(.headline)
+                    .lineLimit(2)
+                
+                Spacer()
+            }
+            .padding(.top, 15)
+            .frame(height: 60)
+            
+            
+            HStack(spacing: 12){
+                
+                Text(species)
+                    .foregroundColor(.white)
+                    .font(.caption2)
+                    .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
+                    .background(.blue)
+                    .cornerRadius(10)
                 
                 Spacer()
                 
@@ -75,18 +89,10 @@ extension CharacterCard{
                             .foregroundColor(statusColor)
                     }
                     
-                    
                 }
                 .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
                 .background(.blue)
                 .cornerRadius(10)
-            }
-            .padding(.top, 15)
-            HStack{
-                Text(species)
-                    .foregroundColor(.white)
-                    .font(.caption2)
-                Spacer()
             }
             Spacer()
             
@@ -98,6 +104,6 @@ extension CharacterCard{
 struct CharacterCard_Previews: PreviewProvider {
     static var previews: some View {
         CharacterCard(character: dev.result)
-            .frame(width: 250, height: 250)
+            .frame(width: 190, height: 190)
     }
 }
