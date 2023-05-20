@@ -1,10 +1,3 @@
-//
-//  RequestTask.swift
-//  RickAndMortySwiftUI
-//
-//  Created by Ahmed Tarık Bozyak on 29.10.2022.
-//
-
 import Foundation
 
 /// A typealias for better readability of headers
@@ -32,7 +25,7 @@ extension RequestTask {
     ///  - cachePolicy: URLRequest.CachePolicy, defining the cache policy for HTTP requests. Default: useProtocolCachePolicy
     ///  - timeout: TimeInterval defining how long it should take until a non-repsonse HTTP request should timeout. Default: 30s
     func urlRequest(
-        cachePolicy: URLRequest.CachePolicy = NetworkUtils.isConnectedToInternet() ? .useProtocolCachePolicy : .returnCacheDataDontLoad,
+        cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
         timeout: TimeInterval = requestTimeoutInterval
     ) throws -> URLRequest {
         let url = try endpoint.url(with: scheme, host: host)

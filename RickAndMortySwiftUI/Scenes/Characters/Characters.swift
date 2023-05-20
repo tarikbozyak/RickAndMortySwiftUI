@@ -64,7 +64,7 @@ struct Characters: View {
                         Image(systemName: "line.3.horizontal.decrease.circle")
                     }
                     .sheet(isPresented: $isShowingFilterMenu) {
-                        BottomSheet(selectedStatus: $selectedStatus)
+                        FilterMenu(status: $selectedStatus)
                             .presentationDetents([.medium, .fraction(0.25)])
                     }
                     

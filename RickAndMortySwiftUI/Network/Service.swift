@@ -6,24 +6,10 @@
 //
 
 import Foundation
-import Combine
 
 class Service {
     
     static let shared = Service()
-    var subscriptions = Set<AnyCancellable>()
-    
-    
-    func getHomeScreen(completion: @escaping((Welcome) -> Void)) {
-        let request = CategoryHomeRequest.character
-        NetworkClient.shared.performRequest(request)
-            .sink(receiveCompletion: NetworkUtils.handleCompletion) { returnedData in
-                DispatchQueue.main.async {
-                    completion(returnedData)
-                }
-            }
-            .store(in: &subscriptions)
-    }
     
     func charactersDataAsync() async throws -> Welcome{
         let request = CategoryHomeRequest.character

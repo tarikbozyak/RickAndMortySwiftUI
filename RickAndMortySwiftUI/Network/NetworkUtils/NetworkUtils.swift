@@ -1,10 +1,3 @@
-//
-//  NetworkUtils.swift
-//  RickAndMortySwiftUI
-//
-//  Created by Ahmed Tarık Bozyak on 29.10.2022.
-//
-
 import Foundation
 import Combine
 
@@ -21,23 +14,7 @@ class NetworkUtils {
         case .finished:
             break
         case .failure(let error):
-            print("<*> Combine Handle Error 🔥 : \(error.self)")
-            
-        }
-    }
-    
-    static func isConnectedToInternet() -> Bool {
-        let status = Reach().connectionStatus()
-        switch status {
-        case .unknown, .offline:
-            print("Not connected")
-            return false
-        case .online(.wwan):
-            print("Connected via WWAN")
-            return true
-        case .online(.wiFi):
-            print("Connected via WiFi")
-            return true
+            print("Error: \(error.self)")
         }
     }
     

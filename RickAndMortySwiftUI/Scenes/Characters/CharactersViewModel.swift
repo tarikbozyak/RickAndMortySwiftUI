@@ -78,8 +78,6 @@ class CharactersViewModel: ObservableObject {
             filteredData = filteredData.filter{$0.status?.rawValue.lowercased() == "Dead".lowercased()}
         case .Unknown:
             filteredData = filteredData.filter{$0.status?.rawValue.lowercased() == "Unknown".lowercased()}
-        default:
-            break
         }
         
         return filteredData

@@ -1,10 +1,3 @@
-//
-//  Request.swift
-//  RickAndMortySwiftUI
-//
-//  Created by Ahmed Tarık Bozyak on 29.10.2022.
-//
-
 import Foundation
 
 /// Defines the structure of a network request

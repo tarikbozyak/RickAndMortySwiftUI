@@ -1,10 +1,3 @@
-//
-//  NetworkError.swift
-//  RickAndMortySwiftUI
-//
-//  Created by Ahmed Tarık Bozyak on 29.10.2022.
-//
-
 import Foundation
 
 public enum NetworkError: LocalizedError, Equatable {
@@ -27,7 +20,7 @@ public extension NetworkError {
     /// - Parameter statusCode: HTTP status code
     /// - Returns: Mapped Error
     static func httpError(_ statusCode: Int) -> NetworkError {
-        print("[🔥] HTTP Error, status code: \(statusCode)")
+        print("HTTP Error, status code: \(statusCode)")
         switch statusCode {
         case 400: return .badRequest
         case 401: return .unauthorized
@@ -44,22 +37,8 @@ public extension NetworkError {
     /// - Parameter error: URLSession publisher error
     /// - Returns: Readable NetworkRequestError
     static func handleError(_ error: Error) -> NetworkError {
-        print("[🔥] handle error")
         switch error {
         case is Swift.DecodingError:
-            let error = error as! DecodingError
-            switch error {
-            case .typeMismatch(let key, let value):
-                print("<error> typeMismatch \(key), value \(value)")
-            case .valueNotFound(let key, let value):
-                print("<error> valueNotFound \(key), value \(value)")
-            case .keyNotFound(let key, let value):
-                print("<error> keyNotFound \(key), value \(value)")
-            case .dataCorrupted(let value):
-                print("<error> dataCorrupted , value \(value)")
-            @unknown default:
-                print("<error> unknown handleError")
-            }
             return .decodingError
         case let urlError as URLError:
             return .urlSessionFailed(urlError)
