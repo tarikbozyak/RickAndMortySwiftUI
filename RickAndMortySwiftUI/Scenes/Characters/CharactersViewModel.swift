@@ -59,7 +59,7 @@ class CharactersViewModel: ObservableObject {
         resultList.last?.id == character.id
     }
     
-    func getData(with searchText: String, status: Status) -> [ResultModel] {
+    func getData(with searchText: String, status: Status, gender: Gender, species: Species) -> [ResultModel] {
         
         var filteredData: [ResultModel] = []
         
@@ -69,16 +69,18 @@ class CharactersViewModel: ObservableObject {
             filteredData = resultList.filter { ($0.name ?? "").lowercased().contains(searchText.lowercased())}
         }
         
-        switch status {
-        case .All:
-            break
-        case .Alive:
-            filteredData = filteredData.filter{$0.status?.rawValue.lowercased() == "Alive".lowercased()}
-        case .Dead:
-            filteredData = filteredData.filter{$0.status?.rawValue.lowercased() == "Dead".lowercased()}
-        case .Unknown:
-            filteredData = filteredData.filter{$0.status?.rawValue.lowercased() == "Unknown".lowercased()}
+        if status != .All {
+            filteredData = filteredData.filter{$0.status?.rawValue.lowercased() == status.rawValue.lowercased()}
         }
+        
+        if gender != .All {
+            filteredData = filteredData.filter{$0.gender?.rawValue.lowercased() == gender.rawValue.lowercased()}
+        }
+        
+        if species != .All {
+            filteredData = filteredData.filter{$0.species?.rawValue.lowercased() == species.rawValue.lowercased()}
+        }
+        
         
         return filteredData
     }

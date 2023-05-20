@@ -26,7 +26,7 @@ struct ResultModel: Codable, Hashable {
     let id: Int?
     let name: String?
     let status: Status?
-    let species: String?
+    let species: Species?
     let type: String?
     let gender: Gender?
     let origin, location: Location?
@@ -36,6 +36,25 @@ struct ResultModel: Codable, Hashable {
     let created: String?
 }
 
+// MARK: - Species
+enum Species: String, Codable, Hashable {
+    case All
+    case Human = "Human"
+    case Alien = "Alien"
+    case Unknown = "unknown"
+    case Other = "Other"
+    
+    init?(rawValue: String) {
+        switch rawValue {
+        case "Human": self = .Human
+        case "Alien": self = .Alien
+        case "Unknown": self = .Unknown
+        default : self = .Other
+        }
+    }
+}
+
+// MARK: - Gender
 enum Gender: String, Codable, Hashable {
     case All
     case Female = "Female"
@@ -50,6 +69,7 @@ struct Location: Codable, Hashable {
     let url: String?
 }
 
+// MARK: - Status
 enum Status: String, Codable, Hashable {
     case All
     case Alive = "Alive"

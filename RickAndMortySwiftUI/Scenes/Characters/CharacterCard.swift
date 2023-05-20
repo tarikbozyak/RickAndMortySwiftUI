@@ -13,7 +13,7 @@ struct CharacterCard: View {
     var character: ResultModel
     var imageUrl: URL?
     var name: String
-    var species: String
+    var species: Species
     var status: String
     var statusColor: Color
     
@@ -21,7 +21,7 @@ struct CharacterCard: View {
         imageUrl = URL(string: character.image ?? "")
         self.character = character
         self.name = character.name ?? ""
-        self.species = character.species ?? ""
+        self.species = character.species ?? .Other
         self.status = character.status?.rawValue ?? ""
         self.statusColor = status == "Alive" ? .green : .red
     }
@@ -71,7 +71,7 @@ extension CharacterCard{
             
             HStack(spacing: 12){
                 
-                Text(species)
+                Text(species.rawValue)
                     .foregroundColor(.white)
                     .font(.caption2)
                     .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))

@@ -12,6 +12,8 @@ struct Characters: View {
     @State var searchText = ""
     @State private var isShowingFilterMenu = false
     @State var selectedStatus: Status = .All
+    @State var selectedGender: Gender = .All
+    @State var selectedSpecies: Species = .All
     @StateObject private var vm = CharactersViewModel()
     
     var columns: [GridItem] = [
@@ -29,7 +31,7 @@ struct Characters: View {
                         VStack {
                             Spacer(minLength: 10)
                             LazyVGrid(columns: columns, spacing: 20) {
-                                ForEach(vm.getData(with: searchText, status: selectedStatus), id: \.self) { item in
+                                ForEach(vm.getData(with: searchText, status: selectedStatus, gender: selectedGender, species: selectedSpecies), id: \.self) { item in
                                     CharacterCard(character: item)
                                         .clipped()
                                         .aspectRatio(1, contentMode: .fit)
@@ -64,7 +66,7 @@ struct Characters: View {
                         Image(systemName: "line.3.horizontal.decrease.circle")
                     }
                     .sheet(isPresented: $isShowingFilterMenu) {
-                        FilterMenu(status: $selectedStatus)
+                        FilterMenu(status: $selectedStatus, gender: $selectedGender, species: $selectedSpecies)
                             .presentationDetents([.medium, .fraction(0.25)])
                     }
                     
