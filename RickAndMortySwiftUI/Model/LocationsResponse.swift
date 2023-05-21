@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Welcome
-struct WelcomeLocation: Codable {
+struct LocationResponse: Codable {
     let info: Info?
     let results: [LocationModel]?
 }

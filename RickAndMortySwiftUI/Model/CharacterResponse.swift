@@ -1,5 +1,5 @@
 //
-//  WelcomeResponse.swift
+//  CharacterResponse.swift
 //  RickAndMortySwiftUI
 //
 //  Created by Ahmed Tarık Bozyak on 29.10.2022.
@@ -7,9 +7,8 @@
 
 import Foundation
 
-// MARK: - Welcome
-struct Welcome: Codable {
-    
+// MARK: - CharacterResponse
+struct CharacterResponse: Codable {
     let info: Info?
     let results: [Character]?
 }

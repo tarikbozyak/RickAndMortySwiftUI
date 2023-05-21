@@ -27,7 +27,7 @@ class CharactersViewModel: ObservableObject {
         
         let request = CategoryHomeRequest.character
         do {
-            let data : Welcome = try await NetworkClient.shared.performRequest(request)
+            let data : CharacterResponse = try await NetworkClient.shared.performRequest(request)
             nextPage = data.info?.next
             guard let resultData = data.results else {return}
             characterList += resultData
@@ -46,7 +46,7 @@ class CharactersViewModel: ObservableObject {
         
         let request = PaginationRequest(url: nextPage!)
         do {
-            let data : Welcome = try await NetworkClient.shared.performRequest(request)
+            let data : CharacterResponse = try await NetworkClient.shared.performRequest(request)
             nextPage = data.info?.next
             guard let resultData = data.results else {return}
             characterList += resultData

@@ -26,7 +26,7 @@
 		8A643811290DB6D9004A0DBA /* CategoryHomeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A643810290DB6D9004A0DBA /* CategoryHomeRequest.swift */; };
 		8A643813290DB7ED004A0DBA /* Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A643812290DB7ED004A0DBA /* Characters.swift */; };
 		8A643815290DB808004A0DBA /* CharactersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A643814290DB808004A0DBA /* CharactersViewModel.swift */; };
-		8A643819290DB8DA004A0DBA /* WelcomeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A643818290DB8DA004A0DBA /* WelcomeResponse.swift */; };
+		8A643819290DB8DA004A0DBA /* CharacterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A643818290DB8DA004A0DBA /* CharacterResponse.swift */; };
 		8A64381B290DB9E1004A0DBA /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A64381A290DB9E1004A0DBA /* Service.swift */; };
 		8A816DC7292427E0008EF62B /* EpisodesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A816DC6292427E0008EF62B /* EpisodesViewModel.swift */; };
 		8A816DCB292427FE008EF62B /* EpisodeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A816DCA292427FE008EF62B /* EpisodeCard.swift */; };
@@ -60,7 +60,7 @@
 		8A643810290DB6D9004A0DBA /* CategoryHomeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHomeRequest.swift; sourceTree = "<group>"; };
 		8A643812290DB7ED004A0DBA /* Characters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Characters.swift; sourceTree = "<group>"; };
 		8A643814290DB808004A0DBA /* CharactersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewModel.swift; sourceTree = "<group>"; };
-		8A643818290DB8DA004A0DBA /* WelcomeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeResponse.swift; sourceTree = "<group>"; };
+		8A643818290DB8DA004A0DBA /* CharacterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterResponse.swift; sourceTree = "<group>"; };
 		8A64381A290DB9E1004A0DBA /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		8A816DC6292427E0008EF62B /* EpisodesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewModel.swift; sourceTree = "<group>"; };
 		8A816DCA292427FE008EF62B /* EpisodeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCard.swift; sourceTree = "<group>"; };
@@ -171,7 +171,7 @@
 		8A643817290DB8C3004A0DBA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8A643818290DB8DA004A0DBA /* WelcomeResponse.swift */,
+				8A643818290DB8DA004A0DBA /* CharacterResponse.swift */,
 				8A816DCC29242E75008EF62B /* EpisodeResponse.swift */,
 				8AD9653F29EC091E00315F28 /* LocationsResponse.swift */,
 			);
@@ -318,7 +318,7 @@
 				8AD9653C29EC069E00315F28 /* LocationsViewModel.swift in Sources */,
 				8A816DCD29242E75008EF62B /* EpisodeResponse.swift in Sources */,
 				8A643806290D5B08004A0DBA /* NetworkError.swift in Sources */,
-				8A643819290DB8DA004A0DBA /* WelcomeResponse.swift in Sources */,
+				8A643819290DB8DA004A0DBA /* CharacterResponse.swift in Sources */,
 				8A64381B290DB9E1004A0DBA /* Service.swift in Sources */,
 				8A643804290D5AE4004A0DBA /* Endpoint.swift in Sources */,
 				8A2B6188291BF855004C3440 /* PreviewProvider.swift in Sources */,

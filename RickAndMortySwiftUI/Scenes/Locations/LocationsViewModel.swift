@@ -29,7 +29,7 @@ class LocationsViewModel : ObservableObject {
         
         let request = CategoryHomeRequest.location
         do {
-            let data : WelcomeLocation = try await NetworkClient.shared.performRequest(request)
+            let data : LocationResponse = try await NetworkClient.shared.performRequest(request)
             nextPage = data.info?.next
             guard let resultData = data.results else {return}
             resultList += resultData
@@ -48,7 +48,7 @@ class LocationsViewModel : ObservableObject {
         
         let request = PaginationRequest(url: nextPage!)
         do {
-            let data : WelcomeLocation = try await NetworkClient.shared.performRequest(request)
+            let data : LocationResponse = try await NetworkClient.shared.performRequest(request)
             nextPage = data.info?.next
             guard let resultData = data.results else {return}
             resultList += resultData
