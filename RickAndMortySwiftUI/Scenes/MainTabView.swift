@@ -23,7 +23,7 @@ struct MainTabView: View {
             
             Locations()
                 .tabItem {
-                    Label("Locations", systemImage: "square.and.pencil")
+                    Label("Locations", systemImage: "map")
                 }
         }
     }
