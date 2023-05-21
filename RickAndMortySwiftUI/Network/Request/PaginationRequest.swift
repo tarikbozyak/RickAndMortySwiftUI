@@ -7,7 +7,7 @@
 
 import Foundation
 
-class PaginationRequest: RequestTask {
+class PaginationRequest: RequestModel {
     
     let url: String
 

@@ -11,7 +11,7 @@ import Foundation
 struct Welcome: Codable {
     
     let info: Info?
-    let results: [ResultModel]?
+    let results: [Character]?
 }
 
 // MARK: - Info
@@ -22,7 +22,7 @@ struct Info: Codable {
 }
 
 // MARK: - Result
-struct ResultModel: Codable, Hashable {
+struct Character: Codable, Hashable {
     let id: Int?
     let name: String?
     let status: Status?

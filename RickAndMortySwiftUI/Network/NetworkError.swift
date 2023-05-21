@@ -16,11 +16,7 @@ public enum NetworkError: LocalizedError, Equatable {
 }
 
 public extension NetworkError {
-    /// Parses a HTTP StatusCode and returns a proper error
-    /// - Parameter statusCode: HTTP status code
-    /// - Returns: Mapped Error
     static func httpError(_ statusCode: Int) -> NetworkError {
-        print("HTTP Error, status code: \(statusCode)")
         switch statusCode {
         case 400: return .badRequest
         case 401: return .unauthorized
@@ -33,9 +29,6 @@ public extension NetworkError {
         }
     }
     
-    /// Parses URLSession Publisher errors and return proper ones
-    /// - Parameter error: URLSession publisher error
-    /// - Returns: Readable NetworkRequestError
     static func handleError(_ error: Error) -> NetworkError {
         switch error {
         case is Swift.DecodingError:

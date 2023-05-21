@@ -10,14 +10,14 @@ import Kingfisher
 
 struct CharacterCard: View {
     
-    var character: ResultModel
+    var character: Character
     var imageUrl: URL?
     var name: String
     var species: Species
     var status: String
     var statusColor: Color
     
-    init(character: ResultModel){
+    init(character: Character){
         imageUrl = URL(string: character.image ?? "")
         self.character = character
         self.name = character.name ?? ""

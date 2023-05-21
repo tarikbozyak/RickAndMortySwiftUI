@@ -1,7 +1,6 @@
 import Foundation
 
-/// Defines the structure of a network request
-struct Request: RequestTask {
+struct Request: RequestModel {
     let scheme: URLScheme = .https
     let host: URLHost
     let endpoint: Endpoint

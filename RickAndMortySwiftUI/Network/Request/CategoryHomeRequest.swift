@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum CategoryHomeRequest: RequestTask {
+enum CategoryHomeRequest: RequestModel {
     case character
     case episode(path: String?)
     case location

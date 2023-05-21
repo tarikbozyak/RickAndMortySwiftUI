@@ -1,3 +1,10 @@
+//
+//  Endpoint.swift
+//  RickAndMortySwiftUI
+//
+//  Created by Ahmed Tarık Bozyak on 21.05.2023.
+//
+
 import Foundation
 
 public enum URLType {

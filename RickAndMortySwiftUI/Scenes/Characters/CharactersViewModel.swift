@@ -8,7 +8,7 @@
 import Foundation
 
 class CharactersViewModel: ObservableObject {
-    @Published private(set) var resultList: [ResultModel] = []
+    @Published private(set) var characterList: [Character] = []
     @Published private(set) var viewState: ViewState?
     @Published private(set) var nextPage: String?
     
@@ -30,7 +30,7 @@ class CharactersViewModel: ObservableObject {
             let data : Welcome = try await NetworkClient.shared.performRequest(request)
             nextPage = data.info?.next
             guard let resultData = data.results else {return}
-            resultList += resultData
+            characterList += resultData
         } catch {
             throw NetworkError.handleError(error)
         }
@@ -49,24 +49,22 @@ class CharactersViewModel: ObservableObject {
             let data : Welcome = try await NetworkClient.shared.performRequest(request)
             nextPage = data.info?.next
             guard let resultData = data.results else {return}
-            resultList += resultData
+            characterList += resultData
         } catch {
             throw NetworkError.handleError(error)
         }
     }
     
-    func hasReachedEnd(of character: ResultModel) -> Bool{
-        resultList.last?.id == character.id
+    func hasReachedEnd(of character: Character) -> Bool{
+        characterList.last?.id == character.id
     }
     
-    func getData(with searchText: String, status: Status, gender: Gender, species: Species) -> [ResultModel] {
+    func getData(with searchText: String, status: Status, gender: Gender, species: Species) -> [Character] {
         
-        var filteredData: [ResultModel] = []
+        var filteredData: [Character] = characterList
         
-        if searchText.isEmpty {
-            filteredData = resultList
-        } else {
-            filteredData = resultList.filter { ($0.name ?? "").lowercased().contains(searchText.lowercased())}
+        if !searchText.isEmpty {
+            filteredData = characterList.filter { ($0.name ?? "").lowercased().contains(searchText.lowercased())}
         }
         
         if status != .All {
@@ -80,7 +78,6 @@ class CharactersViewModel: ObservableObject {
         if species != .All {
             filteredData = filteredData.filter{$0.species?.rawValue.lowercased() == species.rawValue.lowercased()}
         }
-        
         
         return filteredData
     }

@@ -67,7 +67,7 @@ struct Characters: View {
                     }
                     .sheet(isPresented: $isShowingFilterMenu) {
                         FilterMenu(status: $selectedStatus, gender: $selectedGender, species: $selectedSpecies)
-                            .presentationDetents([.medium, .fraction(0.25)])
+                            .presentationDetents([.medium, .fraction(0.35)])
                     }
                     
                 }
@@ -75,7 +75,6 @@ struct Characters: View {
         }
         .task {
             if !hasAppeared {
-                
                 try? await vm.getDatas()
                 hasAppeared = true
             }
