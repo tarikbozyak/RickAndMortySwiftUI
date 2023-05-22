@@ -22,7 +22,7 @@ The app has four key area that we will build out step-by-step
 
 ## Author
 
-Free free to reach out with issues, questions or anything else.
+Feel free to reach out with issues, questions or anything else.
 
 - <p><a href="mailto:tarikbozyak@icloud.com">Send Email</a></p>
 - [Follow on LinkedIn](https://linkedin.com/in/tarık-bozyak-604962a1)
